@@ -1,16 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState,} from 'react';
 import { StyleSheet, Text, View, Button,  TextInput, FlatList, Alert} from 'react-native';
 import Header from './components/header';
 import ToDoItem from './components/ToDoItem';
 import AddTodo from './components/addTodo';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
   const [todos, setTodos] = useState([
       {text:'write a todo', key: '1'},
       {text:'write another todo', key: '2'}
     ]);
- 
+
  const pressHandler = (key) => {
   setTodos((prevItems)=>{
     return prevItems.filter(item => item.key!=key);

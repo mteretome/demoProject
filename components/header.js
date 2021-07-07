@@ -1,12 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, FlatList } from 'react-native';
 
 
 export default function Header(){
+
+ const [currentDate, setCurrentDate] = useState('');
+
+  useEffect(() => {
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    setCurrentDate(
+      date + '/' + month 
+    );
+  }, []);
+
 	return (
 		<View style={styles.header}>
-			<Text style={styles.title}> My To Do List</Text>
+			<Text style={styles.title}> {currentDate}: To Do List</Text>
 		</View>
 		)
 }
@@ -19,6 +30,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'pink',
 		alignItems: 'center',
     	justifyContent: 'center',
+ 
 	},
 	title:{
 		fontWeight: 'bold',
